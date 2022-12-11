@@ -1,0 +1,17 @@
+---
+import ContactForm from "../components/ContactForm";
+import Navbar from "../components/Navbar.astro";
+import Page from "../layouts/Page.astro";
+---
+
+<Page
+	desc="Contact Theodore Kakagis"
+	img="images/profile.jpg"
+	kw="contact,dev,webdev,blog"
+	title="Contact"
+	url="contact"
+>
+	<Navbar />
+	<h1 class="text-center font-bold text-7xl mb-4 mt-4">Contact</h1>
+	<ContactForm client:load />
+</Page>

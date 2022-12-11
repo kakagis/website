@@ -1,0 +1,19 @@
+---
+import ProjectsPostList from "../../components/ProjectsPostList.astro";
+import Navbar from "../../components/Navbar.astro";
+import Page from "../../layouts/Page.astro";
+---
+
+<Page
+	desc="Theodore Kakagis' Projects"
+	kw="programming,gaming,blog"
+	img="images/profile.jpg"
+	title="Projects"
+	url="/projects"
+>
+	<Navbar />
+	<h1 class="text-center font-bold text-7xl mb-4 mt-4">Projects</h1>
+	<main class="max-w-[550px] ml-auto mr-auto">
+		<ProjectsPostList />
+	</main>
+</Page>

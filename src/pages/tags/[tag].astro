@@ -1,0 +1,63 @@
+---
+import { makeDate, postFileToId } from "../../util/util";
+import Navbar from "../../components/Navbar.astro";
+import type { MarkdownInstance } from "astro";
+import Page from "../../layouts/Page.astro";
+
+interface Props {
+	posts: MarkdownInstance<Record<string, any>>[];
+	tag: string;
+}
+
+export const getStaticPaths = async () => {
+	const posts = await Astro.glob("../../content/posts/**/*.md");
+
+	const tags = Array.from(
+		new Set(posts.map((post) => post.frontmatter.kw).flat())
+	);
+
+	return tags.map((tag) => ({
+		params: { tag },
+		props: {
+			tag,
+			posts: posts.filter((post) => post.frontmatter.kw.includes(tag)),
+		},
+	}));
+};
+
+const p = Astro.props;
+---
+
+<Page
+	title={`#${p.tag}`}
+	desc={`#${p.tag} posts`}
+	kw={p.tag + ",programming,gaming,blog"}
+	url={`tags/${p.tag}`}
+	img="images/profile.jpg"
+>
+	<Navbar />
+	<h1 class="text-center font-bold text-7xl mb-4 mt-4">#{p.tag}</h1>
+	<main class="max-w-[550px] ml-auto mr-auto">
+		<ul>
+			{
+				p.posts.map((post) => {
+					return (
+						<li class="border-b-white border-b-2 py-2 last:border-none">
+							<a
+								href={"/blog/" + postFileToId(post.file)}
+								class="font-bold text-3xl hover:underline"
+							>
+								{post.frontmatter.title}
+							</a>
+							<p>{post.frontmatter.desc}</p>
+							<p>
+								By {post.frontmatter.author} on
+								{" " + makeDate(post.frontmatter.date)}
+							</p>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</main>
+</Page>

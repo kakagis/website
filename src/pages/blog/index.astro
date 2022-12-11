@@ -1,0 +1,19 @@
+---
+import BlogPostList from "../../components/BlogPostList.astro";
+import Navbar from "../../components/Navbar.astro";
+import Page from "../../layouts/Page.astro";
+---
+
+<Page
+	desc="Theodore Kakagis' Blog"
+	kw="programming,gaming,blog"
+	img="images/profile.jpg"
+	title="Blog"
+	url="/blog"
+>
+	<Navbar />
+	<h1 class="text-center font-bold text-7xl mb-4 mt-4">Blog</h1>
+	<main class="max-w-[550px] ml-auto mr-auto">
+		<BlogPostList />
+	</main>
+</Page>
