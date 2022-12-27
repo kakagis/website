@@ -1,0 +1,20 @@
+---
+interface Props {
+	tag: string;
+}
+
+const TAG_COLORS = {};
+
+const { tag } = Astro.props;
+---
+
+<a
+	href={`/tags/${tag}`}
+	class={`first:ml-0 mx-1 px-2 py-1 hover:outline m-1 p-1.5 rounded-md ${
+		tag in TAG_COLORS
+			? (TAG_COLORS as { [x: string]: any })[tag]
+			: "bg-emerald-600"
+	}`}
+>
+	#{tag}
+</a>
