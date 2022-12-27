@@ -9,8 +9,6 @@ date: 1668700167715
 author: Theodore Kakagis
 ---
 
-# Hello! 👋
-
 Welcome to my website! I made it because i was bored and because programming is fun.  
 This website is using:
 
