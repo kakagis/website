@@ -5,23 +5,23 @@ const projects = await Astro.glob("../content/projects/**/*.md");
 ---
 
 <ul>
-	{
-		projects.map((post) => {
-			return (
-				<li class="border-b-white border-b-2 py-2 last:border-none">
-					<a
-						href={"/projects/" + postFileToId(post.file)}
-						class="font-bold text-3xl hover:underline"
-					>
-						{post.frontmatter.title}
-					</a>
-					<p>{post.frontmatter.desc}</p>
-					<p>
-						By {post.frontmatter.author} on
-						{" " + makeDate(post.frontmatter.date)}
-					</p>
-				</li>
-			);
-		})
-	}
+    {
+        projects.map((post) => {
+            return (
+                <li class="border-b-white border-b-2 py-2 last:border-none">
+                    <a
+                        href={"/projects/" + postFileToId(post.file)}
+                        class="font-bold text-3xl hover:underline"
+                    >
+                        {post.frontmatter.title}
+                    </a>
+                    <p>{post.frontmatter.desc}</p>
+                    <p>
+                        By {post.frontmatter.author} on
+                        {" " + makeDate(post.frontmatter.date)}
+                    </p>
+                </li>
+            );
+        })
+    }
 </ul>

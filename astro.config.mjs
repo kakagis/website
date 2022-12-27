@@ -4,6 +4,6 @@ import compress from "astro-compress";
 import react from "@astrojs/react";
 
 export default defineConfig({
-	site: "https://theodorekakagis.neocities.org",
-	integrations: [sitemap(), react(), compress()],
+    site: "https://theodorekakagis.neocities.org",
+    integrations: [sitemap(), react(), compress()],
 });

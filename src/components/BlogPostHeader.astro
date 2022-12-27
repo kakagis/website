@@ -3,21 +3,21 @@ import { makeDate } from "../util/util";
 import Tag from "./Tag.astro";
 
 interface Props {
-	title: string;
-	kw: string[];
-	date: number;
-	author: string;
+    title: string;
+    kw: string[];
+    date: number;
+    author: string;
 }
 
 const p = Astro.props;
 ---
 
 <header class="max-w-[550px] ml-auto mr-auto text-center mb-4">
-	<h1 class="text-center text-6xl font-extrabold mb-4">{p.title}</h1>
-	<section class="flex items-center justify-center flex-row">
-		{p.kw.map((tag) => <Tag tag={tag} />)}
-	</section>
-	<section>
-		<p>Uploaded At {makeDate(p.date)} by {p.author}</p>
-	</section>
+    <h1 class="text-center text-6xl font-extrabold mb-4">{p.title}</h1>
+    <section class="flex items-center justify-center flex-row">
+        {p.kw.map((tag) => <Tag tag={tag} />)}
+    </section>
+    <section>
+        <p>Uploaded At {makeDate(p.date)} by {p.author}</p>
+    </section>
 </header>

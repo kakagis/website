@@ -5,33 +5,33 @@ import Page from "../../layouts/Page.astro";
 import BlogPostHeader from "../../components/BlogPostHeader.astro";
 
 export const getStaticPaths = async () => {
-	const posts = await Astro.glob("../../content/posts/**/*.md");
+    const posts = await Astro.glob("../../content/posts/**/*.md");
 
-	const result = posts.map((post) => {
-		const id = postFileToId(post.file);
+    const result = posts.map((post) => {
+        const id = postFileToId(post.file);
 
-		return {
-			params: { post: id },
-			props: { content: post.compiledContent(), ...post.frontmatter, id },
-		};
-	});
+        return {
+            params: { post: id },
+            props: { content: post.compiledContent(), ...post.frontmatter, id },
+        };
+    });
 
-	return result;
+    return result;
 };
 
 const p = Astro.props;
 ---
 
 <Page
-	desc={p.desc}
-	img="images/profile.jpg"
-	kw={p.kw.join(",")}
-	title={p.title}
-	url={`blog/${p.id}`}
+    desc={p.desc}
+    img="images/profile.jpg"
+    kw={p.kw.join(",")}
+    title={p.title}
+    url={`blog/${p.id}`}
 >
-	<Navbar />
-	<BlogPostHeader {...(p as any)} />
-	<main class="max-w-[550px] ml-auto mr-auto">
-		<article set:html={p.content} class="pb-2 prose prose-invert" />
-	</main>
+    <Navbar />
+    <BlogPostHeader {...(p as any)} />
+    <main class="max-w-[550px] ml-auto mr-auto">
+        <article set:html={p.content} class="pb-2 prose prose-invert" />
+    </main>
 </Page>

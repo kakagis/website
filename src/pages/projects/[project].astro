@@ -4,33 +4,37 @@ import { postFileToId } from "../../util/util";
 import Page from "../../layouts/Page.astro";
 
 export const getStaticPaths = async () => {
-	const projects = await Astro.glob("../../content/projects/**/*.md");
+    const projects = await Astro.glob("../../content/projects/**/*.md");
 
-	const result = projects.map((project) => {
-		const id = postFileToId(project.file);
+    const result = projects.map((project) => {
+        const id = postFileToId(project.file);
 
-		return {
-			params: { project: id },
-			props: { content: project.compiledContent(), ...project.frontmatter, id },
-		};
-	});
+        return {
+            params: { project: id },
+            props: {
+                content: project.compiledContent(),
+                ...project.frontmatter,
+                id,
+            },
+        };
+    });
 
-	return result;
+    return result;
 };
 
 const p = Astro.props;
 ---
 
 <Page
-	desc={p.desc}
-	img="images/profile.jpg"
-	kw=""
-	title={p.title}
-	url={`projects/${p.id}`}
+    desc={p.desc}
+    img="images/profile.jpg"
+    kw=""
+    title={p.title}
+    url={`projects/${p.id}`}
 >
-	<Navbar />
-	<article
-		set:html={p.content}
-		class="max-w-[550px] ml-auto mr-auto prose prose-invert"
-	/>
+    <Navbar />
+    <article
+        set:html={p.content}
+        class="max-w-[550px] ml-auto mr-auto prose prose-invert"
+    />
 </Page>

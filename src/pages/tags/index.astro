@@ -5,20 +5,20 @@ import Page from "../../layouts/Page.astro";
 import Tag from "../../components/Tag.astro";
 
 const tags = Array.from(
-	new Set(posts.map((post) => post.frontmatter.kw).flat())
+    new Set(posts.map((post) => post.frontmatter.kw).flat())
 );
 ---
 
 <Page
-	desc="Theodore Kakagis' Blog"
-	img="images/profile.jpg"
-	kw="programming,gaming,blog"
-	title="Tags"
-	url="tags"
+    desc="Theodore Kakagis' Blog"
+    img="images/profile.jpg"
+    kw="programming,gaming,blog"
+    title="Tags"
+    url="tags"
 >
-	<Navbar />
-	<h1 class="text-center font-bold text-7xl mb-4 mt-4">Tags</h1>
-	<main class="max-w-[550px] ml-auto mr-auto flex flex-wrap">
-		{tags.map((tag) => <Tag tag={tag} />)}
-	</main>
+    <Navbar />
+    <h1 class="text-center font-bold text-7xl mb-4 mt-4">Tags</h1>
+    <main class="max-w-[550px] ml-auto mr-auto flex flex-wrap">
+        {tags.map((tag) => <Tag tag={tag} />)}
+    </main>
 </Page>

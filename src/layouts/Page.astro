@@ -4,45 +4,45 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "../styles/styles.css";
 
 interface Props {
-	canonical?: string;
-	title: string;
-	type?: string;
-	desc: string;
-	img: string;
-	url: string;
-	kw: string;
+    canonical?: string;
+    title: string;
+    type?: string;
+    desc: string;
+    img: string;
+    url: string;
+    kw: string;
 }
 
 const p = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta charset="UTF-8" />
-		<meta property="og:title" content={p.title} />
-		<meta property="og:type" content={p.type ?? "website"} />
-		<meta property="og:image" content={Astro.site + p.img} />
-		<meta property="og:url" content={Astro.site + p.url} />
-		<meta property="og:description" content={p.desc} />
-		<meta name="twitter:title" content={p.title} />
-		<meta name="twitter:type" content={p.type ?? "website"} />
-		<meta name="twitter:image" content={Astro.site + p.img} />
-		<meta name="twitter:url" content={Astro.site + p.url} />
-		<meta name="twitter:description" content={p.desc} />
-		<meta name="twitter:creator" content="@kakagis" />
-		<meta name="twitter:site" content="@kakagis" />
-		<meta name="twitter:card" content="summary" />
-		<link rel="canonical" href={Astro.site + (p.canonical || p.url)} />
-		<meta name="description" content={p.desc} />
-		<meta name="keywords" content={p.kw} />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<title>{p.title}</title>
-		<Analytics id={import.meta.env.GOOGLE_ANALYTICS_ID} />
-	</head>
-	<body
-		class="bg-zinc-900 text-white ml-2 mr-2 sm:ml-0 sm:mr-0 min-w-screen max-w-screen"
-	>
-		<slot />
-	</body>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8" />
+        <meta property="og:title" content={p.title} />
+        <meta property="og:type" content={p.type ?? "website"} />
+        <meta property="og:image" content={Astro.site + p.img} />
+        <meta property="og:url" content={Astro.site + p.url} />
+        <meta property="og:description" content={p.desc} />
+        <meta name="twitter:title" content={p.title} />
+        <meta name="twitter:type" content={p.type ?? "website"} />
+        <meta name="twitter:image" content={Astro.site + p.img} />
+        <meta name="twitter:url" content={Astro.site + p.url} />
+        <meta name="twitter:description" content={p.desc} />
+        <meta name="twitter:creator" content="@kakagis" />
+        <meta name="twitter:site" content="@kakagis" />
+        <meta name="twitter:card" content="summary" />
+        <link rel="canonical" href={Astro.site + (p.canonical || p.url)} />
+        <meta name="description" content={p.desc} />
+        <meta name="keywords" content={p.kw} />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <title>{p.title}</title>
+        <Analytics id={import.meta.env.GOOGLE_ANALYTICS_ID} />
+    </head>
+    <body
+        class="bg-zinc-900 text-white ml-2 mr-2 sm:ml-0 sm:mr-0 min-w-screen max-w-screen"
+    >
+        <slot />
+    </body>
 </html>
